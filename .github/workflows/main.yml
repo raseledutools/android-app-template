@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ "main", "master" ]
 
+env:
+  # Node.js 20 ডেপ্রিকেশন এড়াতে এবং Node.js 24 ব্যবহার করতে এটি যুক্ত করা হয়েছে
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
