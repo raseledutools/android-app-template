@@ -7,7 +7,6 @@ on:
     branches: [ "main", "master" ]
 
 env:
-  # Node.js 20 ডেপ্রিকেশন এড়াতে এবং Node.js 24 ব্যবহার করতে এটি যুক্ত করা হয়েছে
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
@@ -18,10 +17,10 @@ jobs:
     - name: Checkout the code
       uses: actions/checkout@v4
 
-    - name: Set up JDK 17
+    - name: Set up JDK 21
       uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
         cache: gradle
 
@@ -29,7 +28,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build with Gradle
-      run: ./gradlew assembleDebug
+      run: ./gradlew assembleDebug --stacktrace
 
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v4
